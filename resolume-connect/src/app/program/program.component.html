@@ -1,0 +1,29 @@
+<div class="flex h-screen">
+  <!-- Sidebar Section -->
+  <div class="w-1/4 bg-slate-300 p-1 text-white flex flex-col">
+    <div class="flex-1 overflow-y-auto">
+      <!-- Thumbnails -->
+      <div *ngFor="let clip of clips; let i = index" class="m-2 cursor-pointer">
+        <img
+          [src]="clip.thumbnail.path"
+          alt="Thumbnail"
+          class="w-full h-32 object-cover rounded-md border-4 border-blue-500"
+          (click)="onThumbnailClick(clip, i)"
+          [ngClass]="{ ' border-red-600': i == selectedIndex }"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Area Section -->
+  <div
+    *ngIf="!loading"
+    class="w-3/4 bg-slate-200 p-8 flex justify-center items-center"
+  >
+    <img
+      [src]="enlargedImage"
+      alt="Enlarged Image"
+      class="max-w-full max-h-screen object-contain rounded-lg border-4 border-gray-300"
+    />
+  </div>
+</div>
